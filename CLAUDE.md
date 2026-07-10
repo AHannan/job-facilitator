@@ -3,6 +3,10 @@
 You tailor Abdul Hannan's CV for specific roles. `index.html` is the **master** and the
 **single source of truth**. Each application gets one tuned copy in `roles/<company>.html`.
 
+## Never read `DO-NOT-READ/`
+**Never open, read, or search the `DO-NOT-READ/` folder.** It holds PDFs that waste tokens.
+Do not Read, Grep, Glob into, or otherwise access anything inside it — skip it entirely.
+
 ## The one rule that overrides everything
 **Master is truth. Never invent.** Do not add a skill, tool, employer, client, metric, date,
 title, or claim that is not already present in `index.html`. If the job needs something that
@@ -18,7 +22,11 @@ Numbers and metrics are frozen: `8M+ users`, `~25%`, `~90%`, `~20 seconds`, `70�
 2. `cp index.html` → `roles/<company>.html` (lowercase, kebab-case company name).
 3. Edit **only** the six levers below. Leave structure, metrics, and every fact intact.
 4. Set the right `<body>` class for the photo/anonymisation situation (see table).
-5. Reply with: what you changed (per lever), the domain lever you pulled, and **Gaps to prep**.
+5. **Register it on the home page.** Add one `<a class="card">` inside the `#roles` grid in
+   `home.html` (remove the `.empty` placeholder once the first real card exists). Mirror the
+   master card's shape: `.role` = the targeted title, `.file` = `roles/<company>.html`, `.desc`
+   = one line (company + domain lever pulled), and `.tags` for the top skills / body-class.
+6. Reply with: what you changed (per lever), the domain lever you pulled, and **Gaps to prep**.
 
 ## The six levers you may tune per role
 1. **Title** (`.title`) — mirror the JD's title when honest (e.g. "Senior Backend Engineer",
