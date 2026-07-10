@@ -1,4 +1,4 @@
-# Job Faciltator
+# Job Facilitator
 
 A tiny, token-frugal system for producing role-tailored CVs. One master CV lives in
 `index.html`. For each application, Claude Code writes a tuned copy into `roles/`. The

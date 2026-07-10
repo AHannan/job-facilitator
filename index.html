@@ -1,0 +1,338 @@
+<!--
+  MASTER CV — the single source of truth for Abdul Hannan.
+  Edit THIS file when a real fact changes (new role, metric, skill).
+  Per-application copies live in roles/<company>.html and are produced by Claude Code.
+
+  Body-class toggles (set on <body>):
+    (none)   EU/EEA default — shows the headshot.
+    no-photo Hides the headshot (US / ATS / AI-recruiter roles).
+    anon     Hides education years (employer asks to exclude age).
+    tight    Collapses the earliest 2014–2016 role to one line to hold 2 pages.
+  Combine as needed, e.g. <body class="no-photo anon">.
+-->
+<meta charset="utf-8">
+<title>Abdul Hannan — Senior Java Backend Engineer / Technical Lead — CV</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+  :root {
+    --navy:  #17365d;   /* name, section headers, rules */
+    --blue:  #2b5f8a;   /* job title */
+    --teal:  #2e8b6f;   /* bullets, project subtitles, accents */
+    --link:  #2166a5;   /* hyperlinks */
+    --ink:   #1c1c1c;   /* body text */
+    --muted: #565656;   /* dates, meta */
+    --rule:  #17365d;
+    --page:  210mm;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { background: #e9edf2; }
+
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10.3pt;
+    line-height: 1.34;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ---------- screen-only toolbar ---------- */
+  .toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 18px;
+    background: var(--navy);
+    color: #fff;
+    font-size: 13px;
+  }
+  .toolbar .brand { font-weight: 600; letter-spacing: .02em; opacity: .9; }
+  .toolbar .hint  { opacity: .7; font-size: 12px; margin-left: auto; margin-right: 12px; }
+  .toolbar button {
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    border: 0;
+    border-radius: 6px;
+    padding: 8px 16px;
+    background: var(--teal);
+    color: #fff;
+  }
+  .toolbar button:hover { background: #26765d; }
+
+  /* ---------- page sheet ---------- */
+  .sheet {
+    width: var(--page);
+    min-height: 297mm;
+    margin: 18px auto;
+    padding: 14mm 15mm;
+    background: #fff;
+    box-shadow: 0 2px 18px rgba(0,0,0,.15);
+  }
+
+  /* ---------- header ---------- */
+  header.cv-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding-bottom: 6px;
+  }
+  .head-main { flex: 1 1 auto; min-width: 0; }
+  h1.name {
+    margin: 0 0 2px;
+    font-size: 26pt;
+    line-height: 1.05;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -.01em;
+  }
+  .title {
+    margin: 0 0 4px;
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--blue);
+  }
+  .tagline { margin: 0 0 3px; color: var(--ink); }
+  .contact { margin: 0 0 2px; color: var(--ink); }
+  .contact .sep { color: #9aa4ad; margin: 0 6px; }
+  .links { margin: 0 0 4px; }
+  .relocation { margin: 2px 0 0; }
+  a { color: var(--link); text-decoration: underline; text-underline-offset: 2px; }
+
+  .headshot {
+    flex: 0 0 auto;
+    width: 118px;
+    height: 118px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #dfe4ea;
+  }
+  body.no-photo .headshot { display: none; }
+
+  /* ---------- sections ---------- */
+  section { margin-top: 13px; }
+  h2.section {
+    margin: 0 0 7px;
+    padding-bottom: 3px;
+    font-size: 11pt;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--navy);
+    border-bottom: 1.5px solid var(--rule);
+  }
+
+  p.profile { margin: 0; text-align: justify; }
+
+  /* skills */
+  .skill-row { margin: 0 0 3px; }
+  .skill-row .k { font-weight: 700; color: var(--ink); }
+
+  /* experience */
+  .job { margin: 0 0 9px; page-break-inside: avoid; }
+  .job-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .job-head .who { font-weight: 700; }
+  .job-head .who .role { font-weight: 700; color: var(--ink); }
+  .job-head .when { flex: 0 0 auto; color: var(--muted); white-space: nowrap; }
+  .job-head .where { font-weight: 400; color: var(--muted); }
+  .project-sub {
+    margin: 2px 0 3px;
+    font-style: italic;
+    color: var(--teal);
+  }
+  ul.bullets { margin: 3px 0 3px; padding-left: 16px; }
+  ul.bullets li { margin: 0 0 2px; padding-left: 3px; }
+  ul.bullets li::marker { color: var(--teal); }
+  .tech { margin: 2px 0 0; font-size: 9.4pt; color: #333; }
+  .tech .k { font-weight: 700; }
+
+  .edu-line { margin: 0 0 3px; }
+  .edu-line .deg { font-weight: 700; }
+  body.anon .edu-year { display: none; }
+
+  .li-line { margin: 0 0 3px; }
+  .li-line .k { font-weight: 700; }
+
+  /* two-page tightening: collapse earliest role to a single header line */
+  body.tight .collapsible .project-sub,
+  body.tight .collapsible ul.bullets,
+  body.tight .collapsible .tech { display: none; }
+
+  /* ---------- print ---------- */
+  @page { size: A4; margin: 12mm; }
+
+  @media print {
+    html { background: #fff; }
+    .toolbar, .no-print { display: none !important; }
+    .sheet {
+      width: auto;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+    a { color: var(--link); }
+    section { page-break-inside: auto; }
+    h2.section { page-break-after: avoid; }
+  }
+</style>
+
+<div class="toolbar no-print">
+  <span class="brand">Abdul Hannan · Master CV</span>
+  <span class="hint">Print dialog → Destination: <b>Save as PDF</b> · A4 · Background graphics ON</span>
+  <button type="button" onclick="window.print()">Download PDF</button>
+</div>
+
+<main class="sheet">
+  <header class="cv-head">
+    <div class="head-main">
+      <h1 class="name">Abdul Hannan</h1>
+      <p class="title">Senior Java Backend Engineer / Technical Lead</p>
+      <p class="tagline">Java 17/21 · Spring Boot · Microservices · Kafka · Distributed Systems · Team Leadership · Cloud</p>
+      <p class="contact">Karachi, Pakistan<span class="sep">|</span>+92 343 2324 575<span class="sep">|</span>ahannanhere@gmail.com</p>
+      <p class="links">
+        <a href="https://linkedin.com/in/abdul-hannan-java-engineer">linkedin.com/in/abdul-hannan-java-engineer</a>
+        <span class="sep">|</span>
+        <a href="https://hancraft.tech">hancraft.tech</a>
+      </p>
+      <p class="relocation"><b>Relocation:</b> Open to hybrid relocation to Porto; eligible for the EU Blue Card and able to manage the visa/relocation process after an offer.</p>
+    </div>
+    <img class="headshot" src="assets/headshot.png" alt="Abdul Hannan">
+  </header>
+
+  <section>
+    <h2 class="section">Profile</h2>
+    <p class="profile">Senior Java Backend Engineer and Technical Lead with 10+ years designing and scaling high-throughput, distributed backend platforms in Java and Spring Boot. Currently lead an 8-member cross-functional agile team — owning technical strategy, delivery standards and mentoring, and translating product goals into high-performance technical design and code. Deep hands-on experience with Java 17, Kafka, Redis, PostgreSQL, Docker and Kubernetes across fintech and high-scale consumer platforms serving 8M+ users. Strong record of performance tuning, system design and design patterns, plus active integration of LLMs and AI-assisted workflows into production systems and developer tooling. Comfortable presenting to both technical and non-technical stakeholders and driving continuous improvement in an Agile environment.</p>
+  </section>
+
+  <section>
+    <h2 class="section">Technical Skills</h2>
+    <p class="skill-row"><span class="k">Core:</span> Java 17/21, Spring Boot 3, Spring Security, Microservices, REST APIs, gRPC, OO design, design patterns, Hibernate/JPA</p>
+    <p class="skill-row"><span class="k">Architecture &amp; Scale:</span> Distributed, concurrent &amp; event-driven systems, system design, performance tuning &amp; performance engineering, data modeling, high-availability &amp; scalable backend design</p>
+    <p class="skill-row"><span class="k">Data &amp; Messaging:</span> Kafka, Redis, PostgreSQL, SQL Server, MySQL, Flyway, Liquibase, advanced SQL</p>
+    <p class="skill-row"><span class="k">Cloud &amp; DevOps:</span> Docker, Kubernetes, AWS, Azure, Google Cloud, Rancher, Jenkins, GitHub Actions, GitLab CI</p>
+    <p class="skill-row"><span class="k">AI &amp; LLMs:</span> LLM integrations (OpenAI, Gemini, Claude), AI-assisted development &amp; agentic workflows, Spec Kit, Python scripting, UiPath Studio, RPA</p>
+    <p class="skill-row"><span class="k">Leadership &amp; Practices:</span> Leading agile teams of 7–10 engineers, technical strategy, mentoring, code reviews, production support, Agile/Scrum, Kanban, Jira, JUnit, Mockito, Git, Linux</p>
+    <p class="skill-row"><span class="k">Frontend:</span> Angular, React, Next.js, TypeScript, JavaScript</p>
+  </section>
+
+  <section>
+    <h2 class="section">Professional Experience</h2>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="who">Taazaa Inc — <span class="role">Module Lead / Technical Lead (Java)</span> <span class="where">| Remote, Pakistan / US client</span></div>
+        <div class="when">07/2024 – Present</div>
+      </div>
+      <p class="project-sub">Civi Tax — AI-powered multi-tenant tax platform for high-volume tax filings across 50+ US localities.</p>
+      <ul class="bullets">
+        <li>Lead an 8-member cross-functional agile team, owning technical strategy, delivery standards and mentoring while shipping 2–3 releases per month across 100+ individual and business tax form types.</li>
+        <li>Designed secure, scalable backend microservices in Java 17 / Spring Boot 3 using event-driven patterns, PostgreSQL, Keycloak, Kubernetes and Azure.</li>
+        <li>Built a configurable tax rule engine covering 100+ locality-specific rules, cutting new-city rollout from weeks to days.</li>
+        <li>Integrated LLM/AI and RPA processing pipelines, reducing per-filing processing time from ~5 minutes to ~20 seconds and manual data entry by 70–80%.</li>
+      </ul>
+      <p class="tech"><span class="k">Tech:</span> Java 17, Spring Boot 3, Microservices, PostgreSQL, Kubernetes, Azure, Keycloak, GitHub Actions, Python, Gemini AI, UiPath Studio, RPA, Next.js</p>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="who">INK Solutions — <span class="role">Senior Java Developer</span> <span class="where">| Poland / onsite Saudi Arabia</span></div>
+        <div class="when">10/2022 – 07/2024</div>
+      </div>
+      <p class="project-sub">STC Bank — Merchant Portal supporting 8M+ users and 10k+ merchants.</p>
+      <ul class="bullets">
+        <li>Designed and maintained Java 17 / Spring Boot 3 microservices for merchant onboarding, KYC workflows and digital banking services at high scale.</li>
+        <li>Developed 50+ REST and gRPC endpoints and tuned performance, improving response times by ~25% through Redis caching.</li>
+        <li>Built Kafka-based event-driven flows and set up Docker, Kubernetes and Jenkins CI/CD, reducing deployment time from hours to minutes.</li>
+      </ul>
+      <p class="tech"><span class="k">Tech:</span> Java 17, Spring Boot 3, Microservices, Kafka, Redis, PostgreSQL, gRPC, Docker, Kubernetes, Jenkins, Flyway, Angular, JUnit, Mockito</p>
+      <p class="project-sub">Sellify AI — AI-powered sales optimisation platform for campaigns and multi-channel automation.</p>
+      <ul class="bullets">
+        <li>Built microservices for targeted customer campaigns with GPT-4-powered personalisation in a Kanban-based team.</li>
+        <li>Implemented Twilio, SendGrid and Shopify integrations for automated multi-channel messaging and engagement workflows.</li>
+        <li>Managed DevOps with GitHub Actions, AWS EC2, RDS Aurora PostgreSQL and S3; applied Spring Security across microservices.</li>
+      </ul>
+      <p class="tech"><span class="k">Tech:</span> Java 17, Spring Boot, Microservices, AWS, PostgreSQL, Redis, React, OpenAI API, Twilio, SendGrid, Shopify, GitHub Actions</p>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="who">qordata — <span class="role">Principal Software Engineer</span> <span class="where">| US-based company / Pakistan</span></div>
+        <div class="when">07/2021 – 09/2022</div>
+      </div>
+      <p class="project-sub">Global HCP Engagement — Compliance-as-a-Service platform for pharma and healthcare professional interactions.</p>
+      <ul class="bullets">
+        <li>Led engineering delivery for Spring Boot and Angular platform components supporting 1M+ users in regulated US and EU compliance workflows.</li>
+        <li>Designed microservice architecture and integrated Okta for unified authentication/authorisation, improving onboarding by ~20%.</li>
+        <li>Owned backend delivery, frontend modules, CI/CD improvements, AWS deployments and technical coordination for a 7-member team.</li>
+      </ul>
+      <p class="tech"><span class="k">Tech:</span> Java 8, Spring Boot, REST APIs, Microservices, Feign, PostgreSQL, SQL Server, Liquibase, Angular, Okta, Jenkins, AWS, Docker</p>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <div class="who">qordata — <span class="role">Senior Java Developer</span> <span class="where">| Karachi, Pakistan / Oman onsite</span></div>
+        <div class="when">01/2017 – 06/2021</div>
+      </div>
+      <p class="project-sub">EFPIA Consent &amp; Dispute Management — SaaS platform for European pharmaceutical compliance.</p>
+      <ul class="bullets">
+        <li>Built and maintained consent, dispute, reporting and data-management modules using Java, JSF, Jersey, Hibernate and SQL databases.</li>
+        <li>Automated physician data handling for Fresenius Kabi, reducing manual processing effort by ~90% using multithreading.</li>
+        <li>Delivered client-specific enhancements for European pharma compliance workflows, including data imports, validation and reporting features.</li>
+      </ul>
+      <p class="tech"><span class="k">Tech:</span> Java 7/8, JSF, SOA, Multithreading, Hibernate, Jersey, MySQL, PrimeFaces, SQL</p>
+    </div>
+
+    <div class="job collapsible">
+      <div class="job-head">
+        <div class="who">qordata — <span class="role">Associate Consultant</span> <span class="where">| Karachi, Pakistan</span></div>
+        <div class="when">09/2014 – 12/2016</div>
+      </div>
+      <ul class="bullets">
+        <li>Contributed to Aggregate Spend / Open Payments compliance platforms with backend enhancements, reporting workflows and user-management modules.</li>
+        <li>Supported Spotfire Web API integration, SharePoint-related workflows and database-backed enterprise reporting features.</li>
+      </ul>
+      <p class="tech"><span class="k">Tech:</span> Java, Spring, Angular, PostgreSQL, SQL Server, Spotfire, Laravel</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section">Side Projects</h2>
+    <div class="job">
+      <div class="job-head">
+        <div class="who">HanCraft (<a href="https://hancraft.tech">hancraft.tech</a>) — <span class="role">Part-Time Product Builder</span> <span class="where">| Independent</span></div>
+        <div class="when">2025 – Present</div>
+      </div>
+      <ul class="bullets">
+        <li>Building small SaaS-style tools and automation prototypes for QR workflows, waiting lists, pharmacy stock tracking and local-business operations.</li>
+        <li>Experimenting with agentic AI workflows using Claude AI, Spec Kit, OpenAI API, Google AI Studio (Gemini), Python scripting and RPA-style automation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section">Education</h2>
+    <p class="edu-line"><span class="deg">Master’s in Computer Science</span> — University of Karachi, Pakistan <span class="edu-year">| 2013 – 2014</span></p>
+    <p class="edu-line"><span class="deg">Bachelor’s in Statistics</span> — University of Karachi, Pakistan <span class="edu-year">| 2011 – 2012</span></p>
+  </section>
+
+  <section>
+    <h2 class="section">Languages &amp; Interests</h2>
+    <p class="li-line"><span class="k">Languages:</span> English (C2) · Urdu (Native) · German (A1, learning)</p>
+    <p class="li-line"><span class="k">Interests:</span> Chess, AI-assisted product building, travel, science and history</p>
+  </section>
+</main>
