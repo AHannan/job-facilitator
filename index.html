@@ -222,10 +222,18 @@
 
 <div class="toolbar no-print">
   <span class="brand">Abdul Hannan · Master CV</span>
-  <a class="tb-link" href="home.html">← All versions</a>
+  <a class="tb-link" id="all-versions" href="home.html">← All versions</a>
   <span class="hint">Print dialog → Destination: <b>Save as PDF</b> · A4 · Background graphics ON</span>
   <button type="button" onclick="window.print()">Download PDF</button>
 </div>
+<script>
+  /* Screen-only toolbar fix (never printed): "All versions" points at the root
+     home.html. Role copies live in roles/, so bump the path up one level there.
+     Works in the master and every cp-ed copy automatically. */
+  if (location.pathname.replace(/\\/g, '/').indexOf('/roles/') > -1) {
+    document.getElementById('all-versions').setAttribute('href', '../home.html');
+  }
+</script>
 
 <main class="sheet">
   <header class="cv-head">
